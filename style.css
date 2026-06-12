@@ -1,0 +1,161 @@
+:root {
+    --bg-color: #050505;
+    --accent-red: #ff4d4d;
+    --accent-glow: rgba(255, 77, 77, 0.2);
+    --text-primary: #ffffff;
+    --text-secondary: #a0a0a0;
+    --glass-bg: rgba(20, 20, 20, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-primary);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Background Animation */
+body::before {
+    content: '';
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at center, #1a1a1a 0%, #050505 50%);
+    animation: rotate 20s linear infinite;
+    z-index: -1;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.container {
+    max-width: 600px;
+    width: 90%;
+    padding: 3rem;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    animation: fadeIn 1s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.icon-wrapper {
+    margin-bottom: 2rem;
+    position: relative;
+    display: inline-block;
+}
+
+.warning-icon {
+    width: 80px;
+    height: 80px;
+    fill: var(--accent-red);
+    filter: drop-shadow(0 0 15px var(--accent-glow));
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    from { transform: scale(1); filter: drop-shadow(0 0 15px var(--accent-glow)); }
+    to { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--accent-red)); }
+}
+
+.container:hover {
+    border-color: rgba(255, 77, 77, 0.4);
+    box-shadow: 0 0 40px rgba(255, 77, 77, 0.1);
+    transition: all 0.5s ease;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #ffffff, #a0a0a0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.status-badge {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 77, 77, 0.1);
+    border: 1px solid rgba(255, 77, 77, 0.3);
+    color: var(--accent-red);
+    border-radius: 99px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+p {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.125rem;
+}
+
+.reason-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-align: left;
+    border-left: 4px solid var(--accent-red);
+    margin-bottom: 2rem;
+}
+
+.reason-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.reason-text {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.footer-note {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Glass effect for bottom decoration */
+.blob {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: var(--accent-red);
+    filter: blur(150px);
+    opacity: 0.1;
+    z-index: -1;
+    border-radius: 50%;
+}
+
+.blob-1 { top: -100px; right: -100px; }
+.blob-2 { bottom: -100px; left: -100px; }
